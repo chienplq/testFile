@@ -45,20 +45,16 @@
 
 <script type='text/javascript'>
 
- function saveTextAsFile() {
-        
-        
+ function saveTextAsFile() {  
+		var fileToLoad = document.getElementById("fileToLoad").files[0];
 
-
-var txtFile = document.getElementById("fileToLoad").files[0];
-var file = new File(txtFile);
-var str = "My string of text";
-
-file.open("w"); // open file with write access
-file.writeln("First line of text");
-file.writeln("Second line of text " + str);
-file.write(str);
-file.close();
+        var fileWriter = new FileWriter();
+        fileWriter.onload = function (fileLoadedEvent) {
+			var textFromFileLoaded = document.getElementById("inputTextToSave").value;
+             textFromFileLoaded = fileLoadedEvent.target.result;
+            
+        };
+        fileWriter.writeAsText(fileToLoad, "UTF-8");
 }    
 
   
