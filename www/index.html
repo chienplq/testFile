@@ -49,9 +49,10 @@
     function saveTextAsFile() {
         var fileToLoad = document.getElementById("fileToLoad").files[0]; 
         var string = document.getElementById("inputTextToSave").value;
+		
 		var txtFile = new File(fileToLoad);
 		txtFile.open("w"); //
-		txtFile.writeln(string);
+		txtFile.writeln("adsdasd");
 		txtFile.close();			
     }
 
