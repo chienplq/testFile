@@ -12,25 +12,69 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
 	
     function onDeviceReady() {
-	
-       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-		alert("chien");
-    alert('file system open: ' + fs.name);
-    fs.root.getFile("newPersistentFile.txt", { create: true, exclusive: false }, function (fileEntry) {
-
-        alert("fileEntry is file?" + fileEntry.isFile.toString());
-        // fileEntry.name == 'someFile.txt'
-        // fileEntry.fullPath == '/someFile.txt'
-        writeFile(fileEntry, null);
-
-    }, fail);
-
-}, fail);
+			document.getElementById("inputFileNameToSaveAs").onclick=saveTextAsFile();
+			document.getElementById("loadFileAsText").onclick=loadFileAsText();
     }
-	 function fail(error) {
-        console.log(error.code);
-    }
+	function writeFile(fileEntry, dataObj) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function (fileWriter) {
+
+  
+}
+
+
 	</script>
+	<table>
+ <tr><td>Text to Save:</td></tr>
+ <tr>
+  <td colspan="3">
+   <textarea id="inputTextToSave" style="width:250px;height:125px"></textarea>
+  </td>
+ </tr>
+ <tr>
+  <td>Filename to Save As:</td>
+  <td><input id="inputFileNameToSaveAs"></input></td>
+  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+ </tr>
+ <tr>
+  <td>Select a File to Load:</td>
+  <td><input type="file" id="fileToLoad"></td>
+  <td><button onclick="loadFileAsText()">Load Selected File</button><td>
+ </tr>
+</table>
+
+<script type='text/javascript'>
+
+ function saveTextAsFile() {
+        
+        
+
+
+var txtFile = document.getElementById("fileToLoad").files[0];
+var file = new File(txtFile);
+var str = "My string of text";
+
+file.open("w"); // open file with write access
+file.writeln("First line of text");
+file.writeln("Second line of text " + str);
+file.write(str);
+file.close();
+}    
+
+  
+
+    function loadFileAsText() {
+        var fileToLoad = document.getElementById("fileToLoad").files[0];
+
+        var fileReader = new FileReader();
+        fileReader.onload = function (fileLoadedEvent) {
+            var textFromFileLoaded = fileLoadedEvent.target.result;
+            document.getElementById("inputTextToSave").value = textFromFileLoaded;
+        };
+        fileReader.readAsText(fileToLoad, "UTF-8");
+    }
+
+</script>
 	<p id="abc"> hello </p>
     </body>
 </html>
