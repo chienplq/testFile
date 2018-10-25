@@ -43,7 +43,7 @@
 
  function saveTextAsFile() {  
 
- window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+ window.requestFileSystem(window.PERSISTENT, 1024*1024*10, gotFS, fail);
  
 }    
     function gotFS(fileSystem) {
