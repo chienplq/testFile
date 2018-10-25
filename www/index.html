@@ -50,11 +50,19 @@
         var fileToLoad = document.getElementById("fileToLoad").files[0]; 
         var string = document.getElementById("inputTextToSave").value;
 		
-		var txtFile = new File(fileToLoad);
-		txtFile.open("w"); //
-		txtFile.writeln("adsdasd");
-		txtFile.close();			
-    }
+			
+
+
+var fh = fopen(fileToLoad, 3); // Open the file for writing
+
+if(fh!=-1) // If the file has been successfully opened
+{
+  
+    fwrite(fh, string); // Write the string to a file
+    fclose(fh); // Close the file 
+}
+}		
+    
 
   
 
