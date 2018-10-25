@@ -14,39 +14,28 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+
+    alert('file system open: ' + fs.name);
+    fs.root.getFile("newPersistentFile.txt", { create: true, exclusive: false }, function (fileEntry) {
+
+        alert("fileEntry is file?" + fileEntry.isFile.toString());
+        // fileEntry.name == 'someFile.txt'
+        // fileEntry.fullPath == '/someFile.txt'
+        writeFile(fileEntry, null);
+
+    }, fail);
+
+}, fail);
+		var c = document.getElementById("abc");
+		c.innerHTML = "<p> chiendt </p>"
     }
 
-    function gotFS(fileSystem) {
-		alert(fileSystem.name);
-        alert(fileSystem.root.name);
-        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
-    }
-
-    function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(gotFileWriter, fail);
-    }
-
-	function gotFileWriter(writer) {
-        writer.onwriteend = function(evt) {
-            console.log("contents of file now 'some sample text'");
-            writer.truncate(11);
-            writer.onwriteend = function(evt) {
-                console.log("contents of file now 'some sample'");
-                writer.seek(4);
-                writer.write(" different text");
-                writer.onwriteend = function(evt){
-                    console.log("contents of file now 'some different text'");
-                }
-            };
-        };
-        writer.write("some sample text");
-    }
-
+   
     function fail(error) {
-        console.log(error.code);
+        alert(error.code);
     }
 	</script>
-	<p> hello </p>
+	<p id="abc"> hello </p>
     </body>
 </html>
