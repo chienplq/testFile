@@ -15,12 +15,7 @@
 			document.getElementById("inputFileNameToSaveAs").onclick=saveTextAsFile();
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
     }
-	function writeFile(fileEntry, dataObj) {
-    // Create a FileWriter object for our FileEntry (log.txt).
-    fileEntry.createWriter(function (fileWriter) {
 
-  
-}
 
 
 	</script>
@@ -31,16 +26,17 @@
    <textarea id="inputTextToSave" style="width:250px;height:125px"></textarea>
   </td>
  </tr>
- <tr>
-  <td>Filename to Save As:</td>
-  <td><input id="inputFileNameToSaveAs"></input></td>
-  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
- </tr>
- <tr>
+  <tr>
   <td>Select a File to Load:</td>
   <td><input type="file" id="fileToLoad"></td>
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
+ <tr>
+  <td>--</td>
+  <td>--</td>
+  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+ </tr>
+
 </table>
 
 <script type='text/javascript'>
@@ -71,6 +67,6 @@
     }
 
 </script>
-	<p id="abc"> hello </p>
+	
     </body>
 </html>

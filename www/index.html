@@ -15,12 +15,7 @@
 			document.getElementById("inputFileNameToSaveAs").onclick=saveTextAsFile();
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
     }
-	function writeFile(fileEntry, dataObj) {
-    // Create a FileWriter object for our FileEntry (log.txt).
-    fileEntry.createWriter(function (fileWriter) {
 
-  
-}
 
 
 	</script>
@@ -31,31 +26,53 @@
    <textarea id="inputTextToSave" style="width:250px;height:125px"></textarea>
   </td>
  </tr>
- <tr>
-  <td>Filename to Save As:</td>
-  <td><input id="inputFileNameToSaveAs"></input></td>
-  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
- </tr>
- <tr>
+  <tr>
   <td>Select a File to Load:</td>
   <td><input type="file" id="fileToLoad"></td>
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
+ <tr>
+  <td>--</td>
+  <td>--</td>
+  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+ </tr>
+
 </table>
 
 <script type='text/javascript'>
 
  function saveTextAsFile() {  
-		var fileToLoad = document.getElementById("fileToLoad").files[0];
 
-        var fileWriter = new FileWriter();
-        fileWriter.onload = function (fileLoadedEvent) {
-			var textFromFileLoaded = document.getElementById("inputTextToSave").value;
-             textFromFileLoaded = fileLoadedEvent.target.result;
-            
-        };
-        fileWriter.writeAsText(fileToLoad, "UTF-8");
+ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+ 
 }    
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+    }
+
+    function gotFileWriter(writer) {
+        writer.onwriteend = function(evt) {
+            console.log("contents of file now 'some sample text'");
+            writer.truncate(11);  
+            writer.onwriteend = function(evt) {
+                console.log("contents of file now 'some sample'");
+                writer.seek(4);
+                writer.write(" different text");
+                writer.onwriteend = function(evt){
+                    console.log("contents of file now 'some different text'");
+                }
+            };
+        };
+        writer.write("some sample text");
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
 
   
 
@@ -71,6 +88,6 @@
     }
 
 </script>
-	<p id="abc"> hello </p>
+	
     </body>
 </html>
