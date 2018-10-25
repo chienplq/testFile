@@ -16,6 +16,8 @@
     }
 
     function gotFS(fileSystem) {
+		console.log(fileSystem.name);
+        console.log(fileSystem.root.name);
         fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
     }
 
@@ -23,7 +25,19 @@
         fileEntry.createWriter(gotFileWriter, fail);
     }
 
-    function gotFileWriter(writer) {
+	function gotFileWriter(writer) {
+        writer.onwriteend = function(evt) {
+            console.log("contents of file now 'some sample text'");
+            writer.truncate(11);
+            writer.onwriteend = function(evt) {
+                console.log("contents of file now 'some sample'");
+                writer.seek(4);
+                writer.write(" different text");
+                writer.onwriteend = function(evt){
+                    console.log("contents of file now 'some different text'");
+                }
+            };
+        };
         writer.write("some sample text");
     }
 
