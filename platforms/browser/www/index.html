@@ -12,9 +12,9 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
 	
     function onDeviceReady() {
-	alert("chien");
+	
        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-
+alert("chien");
     alert('file system open: ' + fs.name);
     fs.root.getFile("newPersistentFile.txt", { create: true, exclusive: false }, function (fileEntry) {
 
