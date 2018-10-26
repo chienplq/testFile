@@ -12,7 +12,7 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
 	
     function onDeviceReady() {
-			document.getElementById("inputFileNameToSaveAs").onclick=saveTextAsFile();
+			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
     }
 
@@ -34,7 +34,7 @@
  <tr>
   <td>--</td>
   <td>--</td>
-  <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+  <td>---</button></td>
  </tr>
 
 </table>
@@ -42,16 +42,37 @@
 <script type='text/javascript'>
 
  function saveTextAsFile() {  
-		var fileToLoad = document.getElementById("fileToLoad").files[0];
 
-        var fileWriter = new FileWriter();
-        fileWriter.onload = function (fileLoadedEvent) {
-			var textFromFileLoaded = document.getElementById("inputTextToSave").value;
-             textFromFileLoaded = fileLoadedEvent.target.result;
-            
-        };
-        fileWriter.writeAsText(fileToLoad, "UTF-8");
+ window.requestFileSystem(window.PERSISTENT, 1024*1024*10, gotFS, fail);
+ 
 }    
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+    }
+
+    function gotFileWriter(writer) {
+        writer.onwriteend = function(evt) {
+            console.log("contents of file now 'some sample text'");
+            writer.truncate(11);  
+            writer.onwriteend = function(evt) {
+                console.log("contents of file now 'some sample'");
+                writer.seek(4);
+                writer.write(" different text");
+                writer.onwriteend = function(evt){
+                    console.log("contents of file now 'some different text'");
+                }
+            };
+        };
+        writer.write("some sample text");
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
 
   
 
@@ -62,6 +83,7 @@
         fileReader.onload = function (fileLoadedEvent) {
             var textFromFileLoaded = fileLoadedEvent.target.result;
             document.getElementById("inputTextToSave").value = textFromFileLoaded;
+			alert(fileToLoad.toString());
         };
         fileReader.readAsText(fileToLoad, "UTF-8");
     }

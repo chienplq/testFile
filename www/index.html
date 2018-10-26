@@ -32,9 +32,9 @@
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
  <tr>
+  <td>Click to show pin</td>
   <td>--</td>
-  <td>--</td>
-  <td>---</button></td>
+  <td><button onclick="showPin()">Show pin</button></button></td>
  </tr>
 
 </table>
@@ -74,7 +74,10 @@
         console.log(error.code);
     }
 
-  
+
+	function showPin(status) {
+    alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
+    }
 
     function loadFileAsText() {
         var fileToLoad = document.getElementById("fileToLoad").files[0];
@@ -83,6 +86,7 @@
         fileReader.onload = function (fileLoadedEvent) {
             var textFromFileLoaded = fileLoadedEvent.target.result;
             document.getElementById("inputTextToSave").value = textFromFileLoaded;
+			alert(fileToLoad.toString());
         };
         fileReader.readAsText(fileToLoad, "UTF-8");
     }
