@@ -11,7 +11,7 @@
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
 		window.addEventListener("batterystatus", showPin, false);
-		window.addEventListener("batterycritical", onBatteryCritical, false);
+		window.addEventListener("batterycritical", showPin, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
