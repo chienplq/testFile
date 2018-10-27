@@ -32,33 +32,16 @@
   <td><input type="file" id="fileToLoad"></td>
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
- <tr>
-  <td>Click to show pin</td>
-  <td>--</td>
-  <td><button onclick="showPin()">Show pin</button></button></td>
- </tr>
-   <td>Click to save</td>
-  <td>--</td>
-  <td><button onclick="saveTextAsFile()">save</button></button></td>
- </tr>
-  </tr>
-   <td>Click to show device information</td>
-  <td>--</td>
-  <td><button onclick="showInfor()">show</button></button></td>
- </tr>
-   </tr>
-   <td>Click to show web</td>
-  <td>--</td>
-  <td><button onclick="showWeb()">show</button></button></td>
- </tr>
-  </tr>
-   </tr>
-   <td>Click to show connection</td>
-  <td>--</td>
-  <td><button onclick="checkConnection()">show cnt</button></button></td>
- </tr>
+ </table>
+<button onclick="showPin()" >Click to show pin</button>
 
-</table>
+  
+<button onclick="showInfor()">Click to show device information</button>
+<button onclick="showWeb()">Click to show web</button>
+<button onclick="checkConnection()">Click to show connection</button>
+ 
+
+
 
 <script type='text/javascript'>
 function showInfor(){
@@ -108,8 +91,7 @@ window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_bl
     }
 
 
-	function showPin(status) {
-	alert("asdsdasd");
+	function showPin() {
     alert("Level: " + status.level);
     }
 
