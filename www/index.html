@@ -40,14 +40,16 @@
 <button onclick="showPin()" >Click to show pin</button>
 
   
-<button onclick="showInfor()" style="width:match-parent;height:wrap-content">Click to show device information</button>
-<button onclick="showWeb()" sstyle="width:match-parent;height:wrap-content">Click to show web</button>
-<button onclick="checkConnection()" style="width:match-parent;height:wrap-content">Click to show connection</button>
-<button onclick="showOrientation()"  style="width:match-parent;height:wrap-content">Click to show orientation</button>
-<button onclick="setPortrait()" style="width:match-parent;height:wrap-content">Click to set portrait</button>
-<button onclick="setLandscape()"  style="width:match-parent;height:wrap-content">Click to set landscape</button>
-<button onclick="showStatusbar()"  style="width:match-parent;height:wrap-content">Click to show Statusbar</button>
-<button onclick="hideStatusbar()"  style="width:match-parent;height:wrap-content">Click to hide Statusbar</button>
+<button onclick="showInfor()" style="width:250px;height:25px">Click to show device information</button>
+<button onclick="showWeb()" style="width:250px;height:25px">Click to show web</button>
+<button onclick="checkConnection()" style="width:250px;height:25px">Click to show connection</button>
+<button onclick="showOrientation()"  style="width:250px;height:25px">Click to show orientation</button>
+<button onclick="setPortrait()" style="width:250px;height:25px">Click to set portrait</button>
+<button onclick="setLandscape()"  style="width:250px;height:25px">Click to set landscape</button>
+<button onclick="setLightContent()"  style="width:250px;height:25px">Click to set LightContent</button>
+<button onclick="setStyleDefault()"  style="width:250px;height:25px">Click to set styleDefault</button>
+<button onclick="showStatusbar()"  style="width:250px;height:25px">Click to show Statusbar</button>
+<button onclick="hideStatusbar()"  style="width:250px;height:25px">Click to hide Statusbar</button>
 
  
 
@@ -90,7 +92,12 @@ StatusBar.hide();
 function showStatusbar(){
 StatusBar.show();
 }
-
+function setLightContent(){
+StatusBar.styleLightContent();
+}
+function setStyleDefault(){
+StatusBar.styleDefault();
+}
  function saveTextAsFile() {  
 
     var textToWrite = document.getElementById("inputTextToSave").value;
