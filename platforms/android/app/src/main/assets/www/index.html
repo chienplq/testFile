@@ -10,7 +10,8 @@
 		<script type="text/javascript">
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
-		window.addEventListener("batterystatus", onBatteryStatus, false);
+		window.addEventListener("batterystatus", showPin, false);
+		window.addEventListener("batterycritical", showPin, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
@@ -27,37 +28,41 @@
    <textarea id="inputTextToSave" style="width:250px;height:125px"></textarea>
   </td>
  </tr>
-  <tr>
+  <tr>	
   <td>Select a File to Load:</td>
   <td><input type="file" id="fileToLoad"></td>
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
- <tr>
-  <td>Click to show pin</td>
-  <td>--</td>
-  <td><button onclick="showPin()">Show pin</button></button></td>
- </tr>
-   <td>Click to save</td>
-  <td>--</td>
-  <td><button onclick="saveTextAsFile()">save</button></button></td>
- </tr>
-  </tr>
-   <td>Click to show device information</td>
-  <td>--</td>
-  <td><button onclick="showInfor()">show</button></button></td>
- </tr>
-   </tr>
-   <td>Click to show web</td>
-  <td>--</td>
-  <td><button onclick="showWeb()">show</button></button></td>
- </tr>
+ </table>
+<button onclick="showPin()" >Click to show pin</button>
 
-</table>
+  
+<button onclick="showInfor()">Click to show device information</button>
+<button onclick="showWeb()">Click to show web</button>
+<button onclick="checkConnection()">Click to show connection</button>
+ 
+
+
 
 <script type='text/javascript'>
 function showInfor(){
 alert("Cordova : " + device.cordova + "/n Model : " + device.model +  "/n Platform : " + device.platform + "/n Version : "  + device.version
 +"/n Serial" + device.serial );}
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
 function showWeb(){
 window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_blank', 'location=yes');
 }
@@ -88,8 +93,7 @@ window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_bl
 
 
 	function showPin(status) {
-	alert("asdsdasd");
-    alert("Level: " + status.level);
+    alert("Plug : " + status.isPlugged);
     }
 
     function loadFileAsText() {

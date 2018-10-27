@@ -12,6 +12,9 @@
 		document.addEventListener("deviceready", onDeviceReady, false);
 		window.addEventListener("batterystatus", showPin, false);
 		window.addEventListener("batterycritical", showPin, false);
+		window.addEventListener("orientationchange", function(){
+    console.log(screen.orientation.type); // e.g. portrait
+});
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
@@ -37,9 +40,13 @@
 <button onclick="showPin()" >Click to show pin</button>
 
   
-<button onclick="showInfor()">Click to show device information</button>
-<button onclick="showWeb()">Click to show web</button>
-<button onclick="checkConnection()">Click to show connection</button>
+<button onclick="showInfor()" width="match-parent">Click to show device information</button>
+<button onclick="showWeb()" width="match-parent">Click to show web</button>
+<button onclick="checkConnection()" width="match-parent">Click to show connection</button>
+<button onclick="showOrientation()"  width="match-parent">Click to show orientation</button>
+<button onclick="setPortrait()"  width="match-parent">Click to set portrait</button>
+<button onclick="setLandscape()"  width="match-parent">Click to set orientation</button>
+<button onclick="setUnlock()"  width="match-parent">Click to unlock</button>
  
 
 
@@ -66,6 +73,19 @@ function checkConnection() {
 function showWeb(){
 window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_blank', 'location=yes');
 }
+function showOrientation(){
+alert('Orientation is ' + screen.orientation.type);
+}
+function setPortrait(){
+screen.orientation.lock('portrait');
+}
+function setLandscape(){
+screen.orientation.lock('landscape');
+}
+function setUnlock(){
+screen.orientation.unlock;
+}
+
  function saveTextAsFile() {  
 
     var textToWrite = document.getElementById("inputTextToSave").value;
