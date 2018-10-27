@@ -35,6 +35,10 @@
             {
               "xml": "<feature name=\"CDVOrientation\"><param name=\"android-package\" value=\"cordova.plugins.screenorientation.CDVOrientation\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -75,6 +79,9 @@
       "PACKAGE_NAME": "com.phonegap.helloworld"
     },
     "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
@@ -308,6 +315,14 @@
       "clobbers": [
         "cordova.plugins.screenorientation"
       ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -317,6 +332,7 @@
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-network-information": "2.0.1",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-screen-orientation": "3.0.1"
+    "cordova-plugin-screen-orientation": "3.0.1",
+    "cordova-plugin-statusbar": "2.4.2"
   }
 }

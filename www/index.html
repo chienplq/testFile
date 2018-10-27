@@ -40,13 +40,15 @@
 <button onclick="showPin()" >Click to show pin</button>
 
   
-<button onclick="showInfor()" width="match-parent">Click to show device information</button>
-<button onclick="showWeb()" width="match-parent">Click to show web</button>
-<button onclick="checkConnection()" width="match-parent">Click to show connection</button>
-<button onclick="showOrientation()"  width="match-parent">Click to show orientation</button>
-<button onclick="setPortrait()"  width="match-parent">Click to set portrait</button>
-<button onclick="setLandscape()"  width="match-parent">Click to set orientation</button>
-<button onclick="setUnlock()"  width="match-parent">Click to unlock</button>
+<button onclick="showInfor()" style="width:match-parent;height:wrap-content">Click to show device information</button>
+<button onclick="showWeb()" sstyle="width:match-parent;height:wrap-content">Click to show web</button>
+<button onclick="checkConnection()" style="width:match-parent;height:wrap-content">Click to show connection</button>
+<button onclick="showOrientation()"  style="width:match-parent;height:wrap-content">Click to show orientation</button>
+<button onclick="setPortrait()" style="width:match-parent;height:wrap-content">Click to set portrait</button>
+<button onclick="setLandscape()"  style="width:match-parent;height:wrap-content">Click to set landscape</button>
+<button onclick="showStatusbar()"  style="width:match-parent;height:wrap-content">Click to show Statusbar</button>
+<button onclick="hideStatusbar()"  style="width:match-parent;height:wrap-content">Click to hide Statusbar</button>
+
  
 
 
@@ -82,8 +84,11 @@ screen.orientation.lock('portrait');
 function setLandscape(){
 screen.orientation.lock('landscape');
 }
-function setUnlock(){
-screen.orientation.unlock;
+function hideStatusbar(){
+StatusBar.hide();
+}
+function showStatusbar(){
+StatusBar.show();
 }
 
  function saveTextAsFile() {  
