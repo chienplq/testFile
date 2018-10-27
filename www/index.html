@@ -28,7 +28,7 @@
    <textarea id="inputTextToSave" style="width:250px;height:125px"></textarea>
   </td>
  </tr>
-  <tr>
+  <tr>	
   <td>Select a File to Load:</td>
   <td><input type="file" id="fileToLoad"></td>
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
@@ -93,7 +93,7 @@ window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_bl
 
 
 	function showPin(status) {
-    alert("Level: " + status.level);
+    alert("Plug : " + status.isPlugged);
     }
 
     function loadFileAsText() {
