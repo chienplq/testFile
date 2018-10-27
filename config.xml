@@ -19,4 +19,7 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+	<preference name="SplashMaintainAspectRatio" value="true|false" />
+<preference name="SplashShowOnlyFirstTime" value="true|false" />
+<preference name="SplashScreenSpinnerColor" value="white" />
 </widget>
