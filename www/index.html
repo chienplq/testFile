@@ -10,11 +10,11 @@
 		<script type="text/javascript">
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
-	
+	window.addEventListener("batterystatus", onBatteryStatus, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
-			window.addEventListener("batterystatus", onBatteryStatus, false);
+			
     }
 
 
