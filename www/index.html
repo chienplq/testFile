@@ -14,6 +14,7 @@
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
+			window.addEventListener("batterystatus", onBatteryStatus, false);
     }
 
 
@@ -48,6 +49,7 @@
 }    
     function gotFS(fileSystem) {
         fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+		
     }
 
     function gotFileEntry(fileEntry) {
@@ -76,6 +78,7 @@
 
 
 	function showPin(status) {
+	alert("asdsdasd");
     alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
     }
 
