@@ -10,7 +10,7 @@
 		<script type="text/javascript">
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
-		window.addEventListener("batterystatus", onBatteryStatus, false);
+		document.addEventListener("batterystatus", onBatteryStatus, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
@@ -91,7 +91,7 @@ window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_bl
     }
 
 
-	function showPin() {
+	function showPin(status) {
     alert("Level: " + status.level);
     }
 
