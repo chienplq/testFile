@@ -37,7 +37,7 @@
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
  </table>
-<button onclick="showPin()" >Click to show pin</button>
+
 
   
 <button onclick="showInfor()" style="width:250px;height:25px">Click to show device information</button>
@@ -50,7 +50,8 @@
 <button onclick="setStyleDefault()"  style="width:250px;height:25px">Click to set styleDefault</button>
 <button onclick="showStatusbar()"  style="width:250px;height:25px">Click to show Statusbar</button>
 <button onclick="hideStatusbar()"  style="width:250px;height:25px">Click to hide Statusbar</button>
-
+<button onclick="showsplashscreen.()"  style="width:250px;height:25px">Click to show splashscreen.</button>
+<button onclick="hidesplashscreen.()"  style="width:250px;height:25px">Click to hide splashscreen.</button>
  
 
 
@@ -98,6 +99,16 @@ StatusBar.styleLightContent();
 function setStyleDefault(){
 StatusBar.styleDefault();
 }
+function showsplashscreen(){
+ navigator.splashscreen.hide();
+setTimeout(function() {
+    navigator.splashscreen.hide();
+}, 2000);
+}
+function hidesplashscreen(){
+StatusBar.styleDefault();
+}
+
  function saveTextAsFile() {  
 
     var textToWrite = document.getElementById("inputTextToSave").value;
