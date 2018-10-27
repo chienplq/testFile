@@ -44,7 +44,12 @@
   </tr>
    <td>Click to show device information</td>
   <td>--</td>
-  <td><button onclick="showInfor()">save</button></button></td>
+  <td><button onclick="showInfor()">show</button></button></td>
+ </tr>
+   </tr>
+   <td>Click to show web</td>
+  <td>--</td>
+  <td><button onclick="showWeb()">show</button></button></td>
  </tr>
 
 </table>
@@ -53,6 +58,9 @@
 function showInfor(){
 alert("Cordova : " + device.cordova + "/n Model : " + device.model +  "/n Platform : " + device.platform + "/n Version : "  + device.version
 +"/n Serial" + device.serial );}
+function showWeb(){
+window.open = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+}
  function saveTextAsFile() {  
 
     var textToWrite = document.getElementById("inputTextToSave").value;
