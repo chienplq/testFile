@@ -4,13 +4,27 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
   "installed_plugins": {
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     },
     "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
@@ -208,10 +222,25 @@
       "id": "cordova-plugin-battery-status.Battery",
       "pluginId": "cordova-plugin-battery-status",
       "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "id": "cordova-plugin-device.device",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+      "id": "cordova-plugin-device.DeviceProxy",
+      "pluginId": "cordova-plugin-device",
+      "runs": true
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-battery-status": "2.0.2"
+    "cordova-plugin-battery-status": "2.0.2",
+    "cordova-plugin-device": "2.0.2"
   }
 }

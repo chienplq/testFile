@@ -10,10 +10,11 @@
 		<script type="text/javascript">
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
-	
+	window.addEventListener("batterystatus", onBatteryStatus, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
+			
     }
 
 
@@ -32,9 +33,13 @@
   <td><button onclick="loadFileAsText()">Load Selected File</button><td>
  </tr>
  <tr>
+  <td>Click to show pin</td>
   <td>--</td>
+  <td><button onclick="showPin()">Show pin</button></button></td>
+ </tr>
+   <td>Click to save</td>
   <td>--</td>
-  <td>---</button></td>
+  <td><button onclick="saveTextAsFile()">save</button></button></td>
  </tr>
 
 </table>
@@ -43,38 +48,34 @@
 
  function saveTextAsFile() {  
 
- window.requestFileSystem(window.PERSISTENT, 1024*1024*10, gotFS, fail);
- 
-}    
-    function gotFS(fileSystem) {
-        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    var textToWrite = document.getElementById("inputTextToSave").value;
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+	
+      var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null)
+    {
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }
+    else
+    {
+
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
     }
 
-    function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(gotFileWriter, fail);
+    downloadLink.click();
     }
 
-    function gotFileWriter(writer) {
-        writer.onwriteend = function(evt) {
-            console.log("contents of file now 'some sample text'");
-            writer.truncate(11);  
-            writer.onwriteend = function(evt) {
-                console.log("contents of file now 'some sample'");
-                writer.seek(4);
-                writer.write(" different text");
-                writer.onwriteend = function(evt){
-                    console.log("contents of file now 'some different text'");
-                }
-            };
-        };
-        writer.write("some sample text");
-    }
 
-    function fail(error) {
-        console.log(error.code);
+	function showPin(status) {
+	alert("asdsdasd");
+    alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
     }
-
-  
 
     function loadFileAsText() {
         var fileToLoad = document.getElementById("fileToLoad").files[0];

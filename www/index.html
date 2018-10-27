@@ -10,7 +10,7 @@
 		<script type="text/javascript">
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
-	window.addEventListener("batterystatus", onBatteryStatus, false);
+		window.addEventListener("batterystatus", onBatteryStatus, false);
     function onDeviceReady() {
 			
 			document.getElementById("loadFileAsText").onclick=loadFileAsText();
@@ -41,11 +41,17 @@
   <td>--</td>
   <td><button onclick="saveTextAsFile()">save</button></button></td>
  </tr>
+  </tr>
+   <td>Click to show device information</td>
+  <td>--</td>
+  <td><button onclick="showInfor()">save</button></button></td>
+ </tr>
 
 </table>
 
 <script type='text/javascript'>
-
+function showInfor(){
+alert("model :" + device.model);}
  function saveTextAsFile() {  
 
     var textToWrite = document.getElementById("inputTextToSave").value;
@@ -74,7 +80,7 @@
 
 	function showPin(status) {
 	alert("asdsdasd");
-    alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
+    alert("Level: " + status.level);
     }
 
     function loadFileAsText() {
