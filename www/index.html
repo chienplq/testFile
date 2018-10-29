@@ -80,7 +80,7 @@ function showWeb(){
 window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_blank', 'location=yes');
 }
 function showWeb2(){
-if(document.getElementById("theWeb").value.toString().lenght() >0) {
+if(document.getElementById("theWeb").value.toString()!=null) {
 var abc = "http://" + document.getElementById("theWeb").value.toString();
 window.open = cordova.InAppBrowser.open(abc, '_blank', 'location=yes');
 }
