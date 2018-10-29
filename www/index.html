@@ -39,17 +39,22 @@
  </table>
 
 
-  
-<button onclick="showInfor()" style="width:250px;height:25px">Click to show device information</button>
-<button onclick="showWeb()" style="width:250px;height:25px">Click to show web</button>
-<button onclick="checkConnection()" style="width:250px;height:25px">Click to show connection</button>
-<button onclick="showOrientation()"  style="width:250px;height:25px">Click to show orientation</button>
-<button onclick="setPortrait()" style="width:250px;height:25px">Click to set portrait</button>
-<button onclick="setLandscape()"  style="width:250px;height:25px">Click to set landscape</button>
-<button onclick="setLightContent()"  style="width:250px;height:25px">Click to set LightContent</button>
-<button onclick="setStyleDefault()"  style="width:250px;height:25px">Click to set styleDefault</button>
-<button onclick="showStatusbar()"  style="width:250px;height:25px">Click to show Statusbar</button>
-<button onclick="hideStatusbar()"  style="width:250px;height:25px">Click to hide Statusbar</button>
+<p>Device information</p>
+<button onclick="showInfor()" style="width:100%;height:25px;margin:10px">Click to show device information</button>
+<p>Web in app</p>
+<button onclick="showWeb()" style="width:100%;height:25px;margin:10px">Click to show web</button>
+<p>Check connection</p>
+<button onclick="checkConnection()" style="width:100%;height:25px;margin:10px">Click to show connection</button>
+<p>Set Orientation</p>
+<button onclick="showOrientation()"  style="width:100%;;height:25px;margin:10px">Click to show orientation</button>
+<button onclick="setPortrait()" style="100%;height:25px;margin:10px">Click to set portrait</button>
+<button onclick="setLandscape()"  style="100%;height:25px;margin:10px">Click to set landscape</button>
+<p>Set StatusBar</p>
+<button onclick="setLightContent()"   style="width:100%;height:25px;margin:10px">Click to set LightContent</button>
+<button onclick="setStyleDefault()"  style="width:100%;height:25px;margin:10px">Click to set styleDefault</button>
+<button onclick="showStatusbar()"  style="width:100%;height:25px;margin:10px">Click to show Statusbar</button>
+<button onclick="hideStatusbar()"  style="width:100%;height:25px;margin:10px">Click to hide Statusbar</button>
+
 
  
 
@@ -57,8 +62,8 @@
 
 <script type='text/javascript'>
 function showInfor(){
-alert("Cordova : " + device.cordova + "/n Model : " + device.model +  "/n Platform : " + device.platform + "/n Version : "  + device.version
-+"/n Serial" + device.serial );}
+alert("Cordova : " + device.cordova + "   Model : " + device.model +  "   Platform : " + device.platform + "  Version : "  + device.version
++"   Serial" + device.serial );}
 function checkConnection() {
     var networkState = navigator.connection.type;
 
