@@ -24,25 +24,16 @@
 
 
 	</script>
-	<table>
- <tr><td>Text to Save:</td></tr>
- <tr>
-  <td colspan="3">
-   <textarea id="inputTextToSave" style="width:170px;height:125px"></textarea>
-  </td>
- </tr>
-  <tr>	
-  <td>Select a File to Load:</td>
-  <td><input type="file" id="fileToLoad"></td>
-  <td><button onclick="loadFileAsText()">Load Selected File</button><td>
- </tr>
- </table>
+	
+
 
 
 <p>Device information</p>
 <button onclick="showInfor()" style="width:100%;height:25px;margin:5px">Click to show device information</button>
 <p>Web in app</p>
-<button onclick="showWeb()" style="width:100%;height:25px;margin:5px">Click to show web</button>
+<button onclick="showWeb()" style="width:100%;height:25px;margin:5px">Click to show web (default)</button>
+ <input type="text" id="theWeb">
+ <button onclick="showWeb2()" style="width:100%;height:25px;margin:5px">Click to show your web</button>
 <p>Check connection</p>
 <button onclick="checkConnection()" style="width:100%;height:25px;margin:5px">Click to show connection</button>
 <p>Set Orientation</p>
@@ -55,7 +46,13 @@
 <button onclick="showStatusbar()"  style="width:100%;height:25px;margin:5px">Click to show Statusbar</button>
 <button onclick="hideStatusbar()"  style="width:100%;height:25px;margin:5px">Click to hide Statusbar</button>
 
+<P>Text to Save:</p>
 
+   <textarea id="inputTextToSave" style="width:170px;height:125px"></textarea>
+ 	
+  <p>Select a File to Load:</p>
+ <input type="file" id="fileToLoad">
+<button onclick="loadFileAsText()">Load Selected File</button>
  
 
 
@@ -81,6 +78,14 @@ function checkConnection() {
 }
 function showWeb(){
 window.open = cordova.InAppBrowser.open('http://facebook.com/chien2661997', '_blank', 'location=yes');
+}
+function showWeb2(){
+if(document.getElementById("theWeb").value.toString().lenght() >0) {
+var abc = "http://" + document.getElementById("theWeb").value.toString();
+window.open = cordova.InAppBrowser.open(abc, '_blank', 'location=yes');
+}
+else {
+alert("Please intput");}
 }
 function showOrientation(){
 alert('Orientation is ' + screen.orientation.type);
